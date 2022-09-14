@@ -1,3 +1,4 @@
+---
 # image:
 #  file: .gitpod.Dockerfile
 
@@ -11,11 +12,13 @@ tasks:
       cd -
       # Install Foundry
       curl -L https://foundry.paradigm.xyz | bash
+      source /home/gitpod/.bashrc
       foundryup
       gp sync-done build
     command: |
       pnpm playground
   - name: Shell
+    init: gp sync-await build
     command: |
       bash
     openMode: split-right
@@ -26,6 +29,8 @@ vscode:
     - bungcip.better-toml
     - esbenp.prettier-vscode
     - juanblanco.solidity
+
+    - dbaeumer.vscode-eslint
 
 ports:
   # allow front end to access backend api
