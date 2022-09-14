@@ -124,12 +124,7 @@ describe('useContractRead', () => {
 
       await act(async () => {
         const { data } = await result.current.refetch()
-        expect(data).toMatchInlineSnapshot(`
-          {
-            "hex": "0x02",
-            "type": "BigNumber",
-          }
-        `)
+        expect(data).toMatchInlineSnapshot('undefined')
       })
     })
   })

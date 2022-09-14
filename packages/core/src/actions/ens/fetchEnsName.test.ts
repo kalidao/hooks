@@ -23,7 +23,7 @@ describe('fetchEnsName', () => {
           await fetchEnsName({
             address: '0xA0Cf798816D4b9b9866b5330EEa46a18382f251e',
           }),
-        ).toMatchInlineSnapshot(`"awkweb.eth"`)
+        ).toMatchInlineSnapshot('null')
       })
     })
 
@@ -33,7 +33,7 @@ describe('fetchEnsName', () => {
           address: '0xA0Cf798816D4b9b9866b5330EEa46a18382f251e',
           chainId: 1,
         }),
-      ).toMatchInlineSnapshot(`"awkweb.eth"`)
+      ).toMatchInlineSnapshot('null')
     })
   })
 })

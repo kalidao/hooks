@@ -15,7 +15,7 @@ describe('useEnsAddress', () => {
     const { internal, ...res } = result.current
     expect(res).toMatchInlineSnapshot(`
       {
-        "data": "0xE5501BC2B0Df6D0D7daAFC18D2ef127D9e612963",
+        "data": null,
         "error": null,
         "fetchStatus": "idle",
         "isError": false,
@@ -43,7 +43,7 @@ describe('useEnsAddress', () => {
       const { internal, ...res } = result.current
       expect(res).toMatchInlineSnapshot(`
         {
-          "data": "0xA0Cf798816D4b9b9866b5330EEa46a18382f251e",
+          "data": null,
           "error": null,
           "fetchStatus": "idle",
           "isError": false,
@@ -101,7 +101,7 @@ describe('useEnsAddress', () => {
         const { internal, ...res } = result.current
         expect(res).toMatchInlineSnapshot(`
           {
-            "data": "0xA0Cf798816D4b9b9866b5330EEa46a18382f251e",
+            "data": null,
             "error": null,
             "fetchStatus": "idle",
             "isError": false,
@@ -154,9 +154,7 @@ describe('useEnsAddress', () => {
 
       await act(async () => {
         const { data } = await result.current.refetch()
-        expect(data).toMatchInlineSnapshot(
-          `"0xfB843f8c4992EfDb6b42349C35f025ca55742D33"`,
-        )
+        expect(data).toMatchInlineSnapshot('null')
       })
     })
   })

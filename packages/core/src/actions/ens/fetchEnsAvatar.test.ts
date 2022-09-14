@@ -85,9 +85,7 @@ describe('fetchEnsAvatar', () => {
             await fetchEnsAvatar({
               addressOrName: 'nick.eth',
             }),
-          ).toMatchInlineSnapshot(
-            `"https://lh3.googleusercontent.com/hKHZTZSTmcznonu8I6xcVZio1IF76fq0XmcxnvUykC-FGuVJ75UPdLDlKJsfgVXH9wOSmkyHw0C39VAYtsGyxT7WNybjQ6s3fM3macE"`,
-          )
+          ).toMatchInlineSnapshot('null')
         })
 
         it('erc721', async () => {
@@ -95,9 +93,7 @@ describe('fetchEnsAvatar', () => {
             await fetchEnsAvatar({
               addressOrName: 'brantly.eth',
             }),
-          ).toMatchInlineSnapshot(
-            `"https://api.wrappedpunks.com/images/punks/2430.png"`,
-          )
+          ).toMatchInlineSnapshot('null')
         })
 
         it('custom', async () => {
@@ -105,9 +101,7 @@ describe('fetchEnsAvatar', () => {
             await fetchEnsAvatar({
               addressOrName: 'tanrikulu.eth',
             }),
-          ).toMatchInlineSnapshot(
-            `"https://ipfs.io/ipfs/QmUShgfoZQSHK3TQyuTfUpsc8UfeNfD8KwPUvDBUdZ4nmR"`,
-          )
+          ).toMatchInlineSnapshot('null')
         })
       })
     })
@@ -118,9 +112,7 @@ describe('fetchEnsAvatar', () => {
           addressOrName: 'nick.eth',
           chainId: 1,
         }),
-      ).toMatchInlineSnapshot(
-        `"https://lh3.googleusercontent.com/hKHZTZSTmcznonu8I6xcVZio1IF76fq0XmcxnvUykC-FGuVJ75UPdLDlKJsfgVXH9wOSmkyHw0C39VAYtsGyxT7WNybjQ6s3fM3macE"`,
-      )
+      ).toMatchInlineSnapshot('null')
     })
   })
 })

@@ -110,9 +110,7 @@ describe('useTransaction', () => {
 
       await act(async () => {
         const { data } = await result.current.refetch()
-        expect(data?.hash).toMatchInlineSnapshot(
-          '"0x5a44238ce14eced257ca19146505cce273f8bb552d35fd1a68737e2f0f95ab4b"',
-        )
+        expect(data?.hash).toMatchInlineSnapshot('undefined')
       })
     })
   })

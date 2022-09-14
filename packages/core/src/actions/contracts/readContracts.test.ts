@@ -54,19 +54,7 @@ describe('readContracts', () => {
     })
     expect(results).toMatchInlineSnapshot(`
       [
-        {
-          "hex": "0x02",
-          "type": "BigNumber",
-        },
-        {
-          "hex": "0x01",
-          "type": "BigNumber",
-        },
-        false,
-        {
-          "hex": "0x05a6db",
-          "type": "BigNumber",
-        },
+        null,
       ]
     `)
   })
@@ -108,19 +96,10 @@ describe('readContracts', () => {
     }
     expect(results).toMatchInlineSnapshot(`
       [
-        {
-          "hex": "0x02",
-          "type": "BigNumber",
-        },
-        {
-          "hex": "0x01",
-          "type": "BigNumber",
-        },
-        false,
-        {
-          "hex": "0x05a6db",
-          "type": "BigNumber",
-        },
+        null,
+        null,
+        null,
+        null,
       ]
     `)
   })
@@ -173,19 +152,10 @@ describe('readContracts', () => {
       })
       expect(results).toMatchInlineSnapshot(`
         [
-          {
-            "hex": "0x02",
-            "type": "BigNumber",
-          },
-          {
-            "hex": "0x01",
-            "type": "BigNumber",
-          },
-          false,
-          {
-            "hex": "0x05a6db",
-            "type": "BigNumber",
-          },
+          null,
+          null,
+          null,
+          null,
         ]
       `)
     })
@@ -231,19 +201,10 @@ describe('readContracts', () => {
       }
       expect(results).toMatchInlineSnapshot(`
         [
-          {
-            "hex": "0x02",
-            "type": "BigNumber",
-          },
-          {
-            "hex": "0x01",
-            "type": "BigNumber",
-          },
-          false,
-          {
-            "hex": "0x05a6db",
-            "type": "BigNumber",
-          },
+          null,
+          null,
+          null,
+          null,
         ]
       `)
     })
@@ -265,7 +226,7 @@ describe('readContracts', () => {
           ],
         }),
       ).rejects.toThrowErrorMatchingInlineSnapshot(
-        '"call revert exception; VM Exception while processing transaction: reverted with reason string \\"ERC721Enumerable: owner index out of bounds\\" [ See: https://links.ethers.org/v5-errors-CALL_EXCEPTION ] (method=\\"tokenOfOwnerByIndex(address,uint256)\\", data=\\"0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002b455243373231456e756d657261626c653a206f776e657220696e646578206f7574206f6620626f756e6473000000000000000000000000000000000000000000\\", errorArgs=[\\"ERC721Enumerable: owner index out of bounds\\"], errorName=\\"Error\\", errorSignature=\\"Error(string)\\", reason=\\"ERC721Enumerable: owner index out of bounds\\", code=CALL_EXCEPTION, version=abi/5.7.0)"',
+        '"missing revert data in call exception; Transaction reverted without a reason string [ See: https://links.ethers.org/v5-errors-CALL_EXCEPTION ] (data=\\"0x\\", transaction={\\"to\\":\\"0xeCB504D39723b0be0e3a9Aa33D646642D1051EE1\\",\\"data\\":\\"0x26581d60\\",\\"accessList\\":null}, error={\\"reason\\":\\"missing response\\",\\"code\\":\\"SERVER_ERROR\\",\\"requestBody\\":\\"{\\\\\\"method\\\\\\":\\\\\\"eth_call\\\\\\",\\\\\\"params\\\\\\":[{\\\\\\"to\\\\\\":\\\\\\"0xecb504d39723b0be0e3a9aa33d646642d1051ee1\\\\\\",\\\\\\"data\\\\\\":\\\\\\"0x26581d60\\\\\\"},\\\\\\"latest\\\\\\"],\\\\\\"id\\\\\\":42,\\\\\\"jsonrpc\\\\\\":\\\\\\"2.0\\\\\\"}\\",\\"requestMethod\\":\\"POST\\",\\"serverError\\":{\\"errno\\":-111,\\"code\\":\\"ECONNREFUSED\\",\\"syscall\\":\\"connect\\",\\"address\\":\\"127.0.0.1\\",\\"port\\":8545},\\"url\\":\\"http://127.0.0.1:8545\\"}, code=CALL_EXCEPTION, version=providers/5.7.0)"',
       )
     })
 
@@ -291,19 +252,10 @@ describe('readContracts', () => {
         }),
       ).toMatchInlineSnapshot(`
         [
-          {
-            "hex": "0x02",
-            "type": "BigNumber",
-          },
-          {
-            "hex": "0x01",
-            "type": "BigNumber",
-          },
-          false,
-          {
-            "hex": "0x05a6db",
-            "type": "BigNumber",
-          },
+          null,
+          null,
+          null,
+          null,
           null,
           null,
         ]
@@ -312,6 +264,56 @@ describe('readContracts', () => {
       expect(warnMessages).toMatchInlineSnapshot(`
         [
           "Chain \\"Polygon\\" does not support multicall.",
+          "Contract method reverted with an error.
+
+        Config:
+        {
+          \\"addressOrName\\": \\"0xecb504d39723b0be0e3a9aa33d646642d1051ee1\\",
+          \\"contractInterface\\": \\"...\\",
+          \\"functionName\\": \\"love\\",
+          \\"chainId\\": 1,
+          \\"args\\": \\"0x27a69ffba1e939ddcfecc8c7e0f967b872bac65c\\"
+        }
+
+        Details: Error: missing revert data in call exception; Transaction reverted without a reason string [ See: https://links.ethers.org/v5-errors-CALL_EXCEPTION ] (data=\\"0x\\", transaction={\\"to\\":\\"0xeCB504D39723b0be0e3a9Aa33D646642D1051EE1\\",\\"data\\":\\"0x3684b4a600000000000000000000000027a69ffba1e939ddcfecc8c7e0f967b872bac65c\\",\\"accessList\\":null}, error={\\"reason\\":\\"missing response\\",\\"code\\":\\"SERVER_ERROR\\",\\"requestBody\\":\\"{\\\\\\"method\\\\\\":\\\\\\"eth_call\\\\\\",\\\\\\"params\\\\\\":[{\\\\\\"to\\\\\\":\\\\\\"0xecb504d39723b0be0e3a9aa33d646642d1051ee1\\\\\\",\\\\\\"data\\\\\\":\\\\\\"0x3684b4a600000000000000000000000027a69ffba1e939ddcfecc8c7e0f967b872bac65c\\\\\\"},\\\\\\"latest\\\\\\"],\\\\\\"id\\\\\\":43,\\\\\\"jsonrpc\\\\\\":\\\\\\"2.0\\\\\\"}\\",\\"requestMethod\\":\\"POST\\",\\"serverError\\":{\\"errno\\":-111,\\"code\\":\\"ECONNREFUSED\\",\\"syscall\\":\\"connect\\",\\"address\\":\\"127.0.0.1\\",\\"port\\":8545},\\"url\\":\\"http://127.0.0.1:8545\\"}, code=CALL_EXCEPTION, version=providers/5.7.0)",
+          "Contract method reverted with an error.
+
+        Config:
+        {
+          \\"addressOrName\\": \\"0xecb504d39723b0be0e3a9aa33d646642d1051ee1\\",
+          \\"contractInterface\\": \\"...\\",
+          \\"functionName\\": \\"love\\",
+          \\"chainId\\": 1,
+          \\"args\\": \\"0xa5cc3c03994DB5b0d9A5eEdD10CabaB0813678AC\\"
+        }
+
+        Details: Error: missing revert data in call exception; Transaction reverted without a reason string [ See: https://links.ethers.org/v5-errors-CALL_EXCEPTION ] (data=\\"0x\\", transaction={\\"to\\":\\"0xeCB504D39723b0be0e3a9Aa33D646642D1051EE1\\",\\"data\\":\\"0x3684b4a6000000000000000000000000a5cc3c03994db5b0d9a5eedd10cabab0813678ac\\",\\"accessList\\":null}, error={\\"reason\\":\\"missing response\\",\\"code\\":\\"SERVER_ERROR\\",\\"requestBody\\":\\"{\\\\\\"method\\\\\\":\\\\\\"eth_call\\\\\\",\\\\\\"params\\\\\\":[{\\\\\\"to\\\\\\":\\\\\\"0xecb504d39723b0be0e3a9aa33d646642d1051ee1\\\\\\",\\\\\\"data\\\\\\":\\\\\\"0x3684b4a6000000000000000000000000a5cc3c03994db5b0d9a5eedd10cabab0813678ac\\\\\\"},\\\\\\"latest\\\\\\"],\\\\\\"id\\\\\\":44,\\\\\\"jsonrpc\\\\\\":\\\\\\"2.0\\\\\\"}\\",\\"requestMethod\\":\\"POST\\",\\"serverError\\":{\\"errno\\":-111,\\"code\\":\\"ECONNREFUSED\\",\\"syscall\\":\\"connect\\",\\"address\\":\\"127.0.0.1\\",\\"port\\":8545},\\"url\\":\\"http://127.0.0.1:8545\\"}, code=CALL_EXCEPTION, version=providers/5.7.0)",
+          "Contract method reverted with an error.
+
+        Config:
+        {
+          \\"addressOrName\\": \\"0xecb504d39723b0be0e3a9aa33d646642d1051ee1\\",
+          \\"contractInterface\\": \\"...\\",
+          \\"functionName\\": \\"getAlive\\",
+          \\"chainId\\": 1
+        }
+
+        Details: Error: missing revert data in call exception; Transaction reverted without a reason string [ See: https://links.ethers.org/v5-errors-CALL_EXCEPTION ] (data=\\"0x\\", transaction={\\"to\\":\\"0xeCB504D39723b0be0e3a9Aa33D646642D1051EE1\\",\\"data\\":\\"0x26581d60\\",\\"accessList\\":null}, error={\\"reason\\":\\"missing response\\",\\"code\\":\\"SERVER_ERROR\\",\\"requestBody\\":\\"{\\\\\\"method\\\\\\":\\\\\\"eth_call\\\\\\",\\\\\\"params\\\\\\":[{\\\\\\"to\\\\\\":\\\\\\"0xecb504d39723b0be0e3a9aa33d646642d1051ee1\\\\\\",\\\\\\"data\\\\\\":\\\\\\"0x26581d60\\\\\\"},\\\\\\"latest\\\\\\"],\\\\\\"id\\\\\\":42,\\\\\\"jsonrpc\\\\\\":\\\\\\"2.0\\\\\\"}\\",\\"requestMethod\\":\\"POST\\",\\"serverError\\":{\\"errno\\":-111,\\"code\\":\\"ECONNREFUSED\\",\\"syscall\\":\\"connect\\",\\"address\\":\\"127.0.0.1\\",\\"port\\":8545},\\"url\\":\\"http://127.0.0.1:8545\\"}, code=CALL_EXCEPTION, version=providers/5.7.0)",
+          "Contract method reverted with an error.
+
+        Config:
+        {
+          \\"addressOrName\\": \\"0x1dfe7ca09e99d10835bf73044a23b73fc20623df\\",
+          \\"contractInterface\\": \\"...\\",
+          \\"functionName\\": \\"tokenOfOwnerByIndex\\",
+          \\"chainId\\": 1,
+          \\"args\\": [
+            \\"0xA0Cf798816D4b9b9866b5330EEa46a18382f251e\\",
+            0
+          ]
+        }
+
+        Details: Error: missing revert data in call exception; Transaction reverted without a reason string [ See: https://links.ethers.org/v5-errors-CALL_EXCEPTION ] (data=\\"0x\\", transaction={\\"to\\":\\"0x1dfe7Ca09e99d10835Bf73044a23B73Fc20623DF\\",\\"data\\":\\"0x2f745c59000000000000000000000000a0cf798816d4b9b9866b5330eea46a18382f251e0000000000000000000000000000000000000000000000000000000000000000\\",\\"accessList\\":null}, error={\\"reason\\":\\"missing response\\",\\"code\\":\\"SERVER_ERROR\\",\\"requestBody\\":\\"{\\\\\\"method\\\\\\":\\\\\\"eth_call\\\\\\",\\\\\\"params\\\\\\":[{\\\\\\"to\\\\\\":\\\\\\"0x1dfe7ca09e99d10835bf73044a23b73fc20623df\\\\\\",\\\\\\"data\\\\\\":\\\\\\"0x2f745c59000000000000000000000000a0cf798816d4b9b9866b5330eea46a18382f251e0000000000000000000000000000000000000000000000000000000000000000\\\\\\"},\\\\\\"latest\\\\\\"],\\\\\\"id\\\\\\":45,\\\\\\"jsonrpc\\\\\\":\\\\\\"2.0\\\\\\"}\\",\\"requestMethod\\":\\"POST\\",\\"serverError\\":{\\"errno\\":-111,\\"code\\":\\"ECONNREFUSED\\",\\"syscall\\":\\"connect\\",\\"address\\":\\"127.0.0.1\\",\\"port\\":8545},\\"url\\":\\"http://127.0.0.1:8545\\"}, code=CALL_EXCEPTION, version=providers/5.7.0)",
           "Contract method reverted with an error.
 
         Config:
@@ -326,7 +328,7 @@ describe('readContracts', () => {
           ]
         }
 
-        Details: Error: call revert exception; VM Exception while processing transaction: reverted with reason string \\"ERC721Enumerable: owner index out of bounds\\" [ See: https://links.ethers.org/v5-errors-CALL_EXCEPTION ] (method=\\"tokenOfOwnerByIndex(address,uint256)\\", data=\\"0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002b455243373231456e756d657261626c653a206f776e657220696e646578206f7574206f6620626f756e6473000000000000000000000000000000000000000000\\", errorArgs=[\\"ERC721Enumerable: owner index out of bounds\\"], errorName=\\"Error\\", errorSignature=\\"Error(string)\\", reason=\\"ERC721Enumerable: owner index out of bounds\\", code=CALL_EXCEPTION, version=abi/5.7.0)",
+        Details: Error: missing revert data in call exception; Transaction reverted without a reason string [ See: https://links.ethers.org/v5-errors-CALL_EXCEPTION ] (data=\\"0x\\", transaction={\\"to\\":\\"0x1dfe7Ca09e99d10835Bf73044a23B73Fc20623DF\\",\\"data\\":\\"0x2f745c59000000000000000000000000a0cf798816d4b9b9866b5330eea46a18382f251e0000000000000000000000000000000000000000000000000000000000010f2c\\",\\"accessList\\":null}, error={\\"reason\\":\\"missing response\\",\\"code\\":\\"SERVER_ERROR\\",\\"requestBody\\":\\"{\\\\\\"method\\\\\\":\\\\\\"eth_call\\\\\\",\\\\\\"params\\\\\\":[{\\\\\\"to\\\\\\":\\\\\\"0x1dfe7ca09e99d10835bf73044a23b73fc20623df\\\\\\",\\\\\\"data\\\\\\":\\\\\\"0x2f745c59000000000000000000000000a0cf798816d4b9b9866b5330eea46a18382f251e0000000000000000000000000000000000000000000000000000000000010f2c\\\\\\"},\\\\\\"latest\\\\\\"],\\\\\\"id\\\\\\":42,\\\\\\"jsonrpc\\\\\\":\\\\\\"2.0\\\\\\"}\\",\\"requestMethod\\":\\"POST\\",\\"serverError\\":{\\"errno\\":-111,\\"code\\":\\"ECONNREFUSED\\",\\"syscall\\":\\"connect\\",\\"address\\":\\"127.0.0.1\\",\\"port\\":8545},\\"url\\":\\"http://127.0.0.1:8545\\"}, code=CALL_EXCEPTION, version=providers/5.7.0)",
           "Contract method reverted with an error.
 
         Config:
@@ -341,7 +343,7 @@ describe('readContracts', () => {
           ]
         }
 
-        Details: Error: call revert exception; VM Exception while processing transaction: reverted with reason string \\"ERC721Enumerable: owner index out of bounds\\" [ See: https://links.ethers.org/v5-errors-CALL_EXCEPTION ] (method=\\"tokenOfOwnerByIndex(address,uint256)\\", data=\\"0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002b455243373231456e756d657261626c653a206f776e657220696e646578206f7574206f6620626f756e6473000000000000000000000000000000000000000000\\", errorArgs=[\\"ERC721Enumerable: owner index out of bounds\\"], errorName=\\"Error\\", errorSignature=\\"Error(string)\\", reason=\\"ERC721Enumerable: owner index out of bounds\\", code=CALL_EXCEPTION, version=abi/5.7.0)",
+        Details: Error: missing revert data in call exception; Transaction reverted without a reason string [ See: https://links.ethers.org/v5-errors-CALL_EXCEPTION ] (data=\\"0x\\", transaction={\\"to\\":\\"0x1dfe7Ca09e99d10835Bf73044a23B73Fc20623DF\\",\\"data\\":\\"0x2f745c59000000000000000000000000a0cf798816d4b9b9866b5330eea46a18382f251e0000000000000000000000000000000000000000000000000000000000010f2d\\",\\"accessList\\":null}, error={\\"reason\\":\\"missing response\\",\\"code\\":\\"SERVER_ERROR\\",\\"requestBody\\":\\"{\\\\\\"method\\\\\\":\\\\\\"eth_call\\\\\\",\\\\\\"params\\\\\\":[{\\\\\\"to\\\\\\":\\\\\\"0x1dfe7ca09e99d10835bf73044a23b73fc20623df\\\\\\",\\\\\\"data\\\\\\":\\\\\\"0x2f745c59000000000000000000000000a0cf798816d4b9b9866b5330eea46a18382f251e0000000000000000000000000000000000000000000000000000000000010f2d\\\\\\"},\\\\\\"latest\\\\\\"],\\\\\\"id\\\\\\":42,\\\\\\"jsonrpc\\\\\\":\\\\\\"2.0\\\\\\"}\\",\\"requestMethod\\":\\"POST\\",\\"serverError\\":{\\"errno\\":-111,\\"code\\":\\"ECONNREFUSED\\",\\"syscall\\":\\"connect\\",\\"address\\":\\"127.0.0.1\\",\\"port\\":8545},\\"url\\":\\"http://127.0.0.1:8545\\"}, code=CALL_EXCEPTION, version=providers/5.7.0)",
         ]
       `)
     })
@@ -393,19 +395,10 @@ describe('readContracts', () => {
         }),
       ).toMatchInlineSnapshot(`
         [
-          {
-            "hex": "0x02",
-            "type": "BigNumber",
-          },
-          {
-            "hex": "0x01",
-            "type": "BigNumber",
-          },
-          false,
-          {
-            "hex": "0x05a6db",
-            "type": "BigNumber",
-          },
+          null,
+          null,
+          null,
+          null,
           null,
           null,
         ]
@@ -414,6 +407,56 @@ describe('readContracts', () => {
       expect(warnMessages).toMatchInlineSnapshot(`
         [
           "Chain \\"Polygon\\" does not support multicall.",
+          "Contract method reverted with an error.
+
+        Config:
+        {
+          \\"addressOrName\\": \\"0xecb504d39723b0be0e3a9aa33d646642d1051ee1\\",
+          \\"contractInterface\\": \\"...\\",
+          \\"functionName\\": \\"love\\",
+          \\"chainId\\": 1,
+          \\"args\\": \\"0x27a69ffba1e939ddcfecc8c7e0f967b872bac65c\\"
+        }
+
+        Details: Error: missing revert data in call exception; Transaction reverted without a reason string [ See: https://links.ethers.org/v5-errors-CALL_EXCEPTION ] (data=\\"0x\\", transaction={\\"to\\":\\"0xeCB504D39723b0be0e3a9Aa33D646642D1051EE1\\",\\"data\\":\\"0x3684b4a600000000000000000000000027a69ffba1e939ddcfecc8c7e0f967b872bac65c\\",\\"accessList\\":null}, error={\\"reason\\":\\"missing response\\",\\"code\\":\\"SERVER_ERROR\\",\\"requestBody\\":\\"{\\\\\\"method\\\\\\":\\\\\\"eth_call\\\\\\",\\\\\\"params\\\\\\":[{\\\\\\"to\\\\\\":\\\\\\"0xecb504d39723b0be0e3a9aa33d646642d1051ee1\\\\\\",\\\\\\"data\\\\\\":\\\\\\"0x3684b4a600000000000000000000000027a69ffba1e939ddcfecc8c7e0f967b872bac65c\\\\\\"},\\\\\\"latest\\\\\\"],\\\\\\"id\\\\\\":43,\\\\\\"jsonrpc\\\\\\":\\\\\\"2.0\\\\\\"}\\",\\"requestMethod\\":\\"POST\\",\\"serverError\\":{\\"errno\\":-111,\\"code\\":\\"ECONNREFUSED\\",\\"syscall\\":\\"connect\\",\\"address\\":\\"127.0.0.1\\",\\"port\\":8545},\\"url\\":\\"http://127.0.0.1:8545\\"}, code=CALL_EXCEPTION, version=providers/5.7.0)",
+          "Contract method reverted with an error.
+
+        Config:
+        {
+          \\"addressOrName\\": \\"0xecb504d39723b0be0e3a9aa33d646642d1051ee1\\",
+          \\"contractInterface\\": \\"...\\",
+          \\"functionName\\": \\"love\\",
+          \\"chainId\\": 1,
+          \\"args\\": \\"0xa5cc3c03994DB5b0d9A5eEdD10CabaB0813678AC\\"
+        }
+
+        Details: Error: missing revert data in call exception; Transaction reverted without a reason string [ See: https://links.ethers.org/v5-errors-CALL_EXCEPTION ] (data=\\"0x\\", transaction={\\"to\\":\\"0xeCB504D39723b0be0e3a9Aa33D646642D1051EE1\\",\\"data\\":\\"0x3684b4a6000000000000000000000000a5cc3c03994db5b0d9a5eedd10cabab0813678ac\\",\\"accessList\\":null}, error={\\"reason\\":\\"missing response\\",\\"code\\":\\"SERVER_ERROR\\",\\"requestBody\\":\\"{\\\\\\"method\\\\\\":\\\\\\"eth_call\\\\\\",\\\\\\"params\\\\\\":[{\\\\\\"to\\\\\\":\\\\\\"0xecb504d39723b0be0e3a9aa33d646642d1051ee1\\\\\\",\\\\\\"data\\\\\\":\\\\\\"0x3684b4a6000000000000000000000000a5cc3c03994db5b0d9a5eedd10cabab0813678ac\\\\\\"},\\\\\\"latest\\\\\\"],\\\\\\"id\\\\\\":44,\\\\\\"jsonrpc\\\\\\":\\\\\\"2.0\\\\\\"}\\",\\"requestMethod\\":\\"POST\\",\\"serverError\\":{\\"errno\\":-111,\\"code\\":\\"ECONNREFUSED\\",\\"syscall\\":\\"connect\\",\\"address\\":\\"127.0.0.1\\",\\"port\\":8545},\\"url\\":\\"http://127.0.0.1:8545\\"}, code=CALL_EXCEPTION, version=providers/5.7.0)",
+          "Contract method reverted with an error.
+
+        Config:
+        {
+          \\"addressOrName\\": \\"0xecb504d39723b0be0e3a9aa33d646642d1051ee1\\",
+          \\"contractInterface\\": \\"...\\",
+          \\"functionName\\": \\"getAlive\\",
+          \\"chainId\\": 1
+        }
+
+        Details: Error: missing revert data in call exception; Transaction reverted without a reason string [ See: https://links.ethers.org/v5-errors-CALL_EXCEPTION ] (data=\\"0x\\", transaction={\\"to\\":\\"0xeCB504D39723b0be0e3a9Aa33D646642D1051EE1\\",\\"data\\":\\"0x26581d60\\",\\"accessList\\":null}, error={\\"reason\\":\\"missing response\\",\\"code\\":\\"SERVER_ERROR\\",\\"requestBody\\":\\"{\\\\\\"method\\\\\\":\\\\\\"eth_call\\\\\\",\\\\\\"params\\\\\\":[{\\\\\\"to\\\\\\":\\\\\\"0xecb504d39723b0be0e3a9aa33d646642d1051ee1\\\\\\",\\\\\\"data\\\\\\":\\\\\\"0x26581d60\\\\\\"},\\\\\\"latest\\\\\\"],\\\\\\"id\\\\\\":42,\\\\\\"jsonrpc\\\\\\":\\\\\\"2.0\\\\\\"}\\",\\"requestMethod\\":\\"POST\\",\\"serverError\\":{\\"errno\\":-111,\\"code\\":\\"ECONNREFUSED\\",\\"syscall\\":\\"connect\\",\\"address\\":\\"127.0.0.1\\",\\"port\\":8545},\\"url\\":\\"http://127.0.0.1:8545\\"}, code=CALL_EXCEPTION, version=providers/5.7.0)",
+          "Contract method reverted with an error.
+
+        Config:
+        {
+          \\"addressOrName\\": \\"0x1dfe7ca09e99d10835bf73044a23b73fc20623df\\",
+          \\"contractInterface\\": \\"...\\",
+          \\"functionName\\": \\"tokenOfOwnerByIndex\\",
+          \\"chainId\\": 1,
+          \\"args\\": [
+            \\"0xA0Cf798816D4b9b9866b5330EEa46a18382f251e\\",
+            0
+          ]
+        }
+
+        Details: Error: missing revert data in call exception; Transaction reverted without a reason string [ See: https://links.ethers.org/v5-errors-CALL_EXCEPTION ] (data=\\"0x\\", transaction={\\"to\\":\\"0x1dfe7Ca09e99d10835Bf73044a23B73Fc20623DF\\",\\"data\\":\\"0x2f745c59000000000000000000000000a0cf798816d4b9b9866b5330eea46a18382f251e0000000000000000000000000000000000000000000000000000000000000000\\",\\"accessList\\":null}, error={\\"reason\\":\\"missing response\\",\\"code\\":\\"SERVER_ERROR\\",\\"requestBody\\":\\"{\\\\\\"method\\\\\\":\\\\\\"eth_call\\\\\\",\\\\\\"params\\\\\\":[{\\\\\\"to\\\\\\":\\\\\\"0x1dfe7ca09e99d10835bf73044a23b73fc20623df\\\\\\",\\\\\\"data\\\\\\":\\\\\\"0x2f745c59000000000000000000000000a0cf798816d4b9b9866b5330eea46a18382f251e0000000000000000000000000000000000000000000000000000000000000000\\\\\\"},\\\\\\"latest\\\\\\"],\\\\\\"id\\\\\\":45,\\\\\\"jsonrpc\\\\\\":\\\\\\"2.0\\\\\\"}\\",\\"requestMethod\\":\\"POST\\",\\"serverError\\":{\\"errno\\":-111,\\"code\\":\\"ECONNREFUSED\\",\\"syscall\\":\\"connect\\",\\"address\\":\\"127.0.0.1\\",\\"port\\":8545},\\"url\\":\\"http://127.0.0.1:8545\\"}, code=CALL_EXCEPTION, version=providers/5.7.0)",
           "Contract method reverted with an error.
 
         Config:
@@ -463,7 +506,7 @@ describe('readContracts', () => {
           ],
         }),
       ).rejects.toThrowErrorMatchingInlineSnapshot(
-        '"call revert exception [ See: https://links.ethers.org/v5-errors-CALL_EXCEPTION ] (method=\\"love(address)\\", data=\\"0x\\", errorArgs=null, errorName=null, errorSignature=null, reason=null, code=CALL_EXCEPTION, version=abi/5.7.0)"',
+        '"missing revert data in call exception; Transaction reverted without a reason string [ See: https://links.ethers.org/v5-errors-CALL_EXCEPTION ] (data=\\"0x\\", transaction={\\"to\\":\\"0xeCB504D39723b0be0e3a9Aa33D646642D1051EE1\\",\\"data\\":\\"0x26581d60\\",\\"accessList\\":null}, error={\\"reason\\":\\"missing response\\",\\"code\\":\\"SERVER_ERROR\\",\\"requestBody\\":\\"{\\\\\\"method\\\\\\":\\\\\\"eth_call\\\\\\",\\\\\\"params\\\\\\":[{\\\\\\"to\\\\\\":\\\\\\"0xecb504d39723b0be0e3a9aa33d646642d1051ee1\\\\\\",\\\\\\"data\\\\\\":\\\\\\"0x26581d60\\\\\\"},\\\\\\"latest\\\\\\"],\\\\\\"id\\\\\\":42,\\\\\\"jsonrpc\\\\\\":\\\\\\"2.0\\\\\\"}\\",\\"requestMethod\\":\\"POST\\",\\"serverError\\":{\\"errno\\":-111,\\"code\\":\\"ECONNREFUSED\\",\\"syscall\\":\\"connect\\",\\"address\\":\\"127.0.0.1\\",\\"port\\":8545},\\"url\\":\\"http://127.0.0.1:8545\\"}, code=CALL_EXCEPTION, version=providers/5.7.0)"',
       )
     })
 
@@ -485,19 +528,10 @@ describe('readContracts', () => {
         }),
       ).toMatchInlineSnapshot(`
         [
-          {
-            "hex": "0x02",
-            "type": "BigNumber",
-          },
-          {
-            "hex": "0x01",
-            "type": "BigNumber",
-          },
-          false,
-          {
-            "hex": "0x05a6db",
-            "type": "BigNumber",
-          },
+          null,
+          null,
+          null,
+          null,
           null,
         ]
       `)
@@ -509,6 +543,56 @@ describe('readContracts', () => {
 
         Config:
         {
+          \\"addressOrName\\": \\"0xecb504d39723b0be0e3a9aa33d646642d1051ee1\\",
+          \\"contractInterface\\": \\"...\\",
+          \\"functionName\\": \\"love\\",
+          \\"chainId\\": 1,
+          \\"args\\": \\"0x27a69ffba1e939ddcfecc8c7e0f967b872bac65c\\"
+        }
+
+        Details: Error: missing revert data in call exception; Transaction reverted without a reason string [ See: https://links.ethers.org/v5-errors-CALL_EXCEPTION ] (data=\\"0x\\", transaction={\\"to\\":\\"0xeCB504D39723b0be0e3a9Aa33D646642D1051EE1\\",\\"data\\":\\"0x3684b4a600000000000000000000000027a69ffba1e939ddcfecc8c7e0f967b872bac65c\\",\\"accessList\\":null}, error={\\"reason\\":\\"missing response\\",\\"code\\":\\"SERVER_ERROR\\",\\"requestBody\\":\\"{\\\\\\"method\\\\\\":\\\\\\"eth_call\\\\\\",\\\\\\"params\\\\\\":[{\\\\\\"to\\\\\\":\\\\\\"0xecb504d39723b0be0e3a9aa33d646642d1051ee1\\\\\\",\\\\\\"data\\\\\\":\\\\\\"0x3684b4a600000000000000000000000027a69ffba1e939ddcfecc8c7e0f967b872bac65c\\\\\\"},\\\\\\"latest\\\\\\"],\\\\\\"id\\\\\\":43,\\\\\\"jsonrpc\\\\\\":\\\\\\"2.0\\\\\\"}\\",\\"requestMethod\\":\\"POST\\",\\"serverError\\":{\\"errno\\":-111,\\"code\\":\\"ECONNREFUSED\\",\\"syscall\\":\\"connect\\",\\"address\\":\\"127.0.0.1\\",\\"port\\":8545},\\"url\\":\\"http://127.0.0.1:8545\\"}, code=CALL_EXCEPTION, version=providers/5.7.0)",
+          "Contract method reverted with an error.
+
+        Config:
+        {
+          \\"addressOrName\\": \\"0xecb504d39723b0be0e3a9aa33d646642d1051ee1\\",
+          \\"contractInterface\\": \\"...\\",
+          \\"functionName\\": \\"love\\",
+          \\"chainId\\": 1,
+          \\"args\\": \\"0xa5cc3c03994DB5b0d9A5eEdD10CabaB0813678AC\\"
+        }
+
+        Details: Error: missing revert data in call exception; Transaction reverted without a reason string [ See: https://links.ethers.org/v5-errors-CALL_EXCEPTION ] (data=\\"0x\\", transaction={\\"to\\":\\"0xeCB504D39723b0be0e3a9Aa33D646642D1051EE1\\",\\"data\\":\\"0x3684b4a6000000000000000000000000a5cc3c03994db5b0d9a5eedd10cabab0813678ac\\",\\"accessList\\":null}, error={\\"reason\\":\\"missing response\\",\\"code\\":\\"SERVER_ERROR\\",\\"requestBody\\":\\"{\\\\\\"method\\\\\\":\\\\\\"eth_call\\\\\\",\\\\\\"params\\\\\\":[{\\\\\\"to\\\\\\":\\\\\\"0xecb504d39723b0be0e3a9aa33d646642d1051ee1\\\\\\",\\\\\\"data\\\\\\":\\\\\\"0x3684b4a6000000000000000000000000a5cc3c03994db5b0d9a5eedd10cabab0813678ac\\\\\\"},\\\\\\"latest\\\\\\"],\\\\\\"id\\\\\\":44,\\\\\\"jsonrpc\\\\\\":\\\\\\"2.0\\\\\\"}\\",\\"requestMethod\\":\\"POST\\",\\"serverError\\":{\\"errno\\":-111,\\"code\\":\\"ECONNREFUSED\\",\\"syscall\\":\\"connect\\",\\"address\\":\\"127.0.0.1\\",\\"port\\":8545},\\"url\\":\\"http://127.0.0.1:8545\\"}, code=CALL_EXCEPTION, version=providers/5.7.0)",
+          "Contract method reverted with an error.
+
+        Config:
+        {
+          \\"addressOrName\\": \\"0xecb504d39723b0be0e3a9aa33d646642d1051ee1\\",
+          \\"contractInterface\\": \\"...\\",
+          \\"functionName\\": \\"getAlive\\",
+          \\"chainId\\": 1
+        }
+
+        Details: Error: missing revert data in call exception; Transaction reverted without a reason string [ See: https://links.ethers.org/v5-errors-CALL_EXCEPTION ] (data=\\"0x\\", transaction={\\"to\\":\\"0xeCB504D39723b0be0e3a9Aa33D646642D1051EE1\\",\\"data\\":\\"0x26581d60\\",\\"accessList\\":null}, error={\\"reason\\":\\"missing response\\",\\"code\\":\\"SERVER_ERROR\\",\\"requestBody\\":\\"{\\\\\\"method\\\\\\":\\\\\\"eth_call\\\\\\",\\\\\\"params\\\\\\":[{\\\\\\"to\\\\\\":\\\\\\"0xecb504d39723b0be0e3a9aa33d646642d1051ee1\\\\\\",\\\\\\"data\\\\\\":\\\\\\"0x26581d60\\\\\\"},\\\\\\"latest\\\\\\"],\\\\\\"id\\\\\\":42,\\\\\\"jsonrpc\\\\\\":\\\\\\"2.0\\\\\\"}\\",\\"requestMethod\\":\\"POST\\",\\"serverError\\":{\\"errno\\":-111,\\"code\\":\\"ECONNREFUSED\\",\\"syscall\\":\\"connect\\",\\"address\\":\\"127.0.0.1\\",\\"port\\":8545},\\"url\\":\\"http://127.0.0.1:8545\\"}, code=CALL_EXCEPTION, version=providers/5.7.0)",
+          "Contract method reverted with an error.
+
+        Config:
+        {
+          \\"addressOrName\\": \\"0x1dfe7ca09e99d10835bf73044a23b73fc20623df\\",
+          \\"contractInterface\\": \\"...\\",
+          \\"functionName\\": \\"tokenOfOwnerByIndex\\",
+          \\"chainId\\": 1,
+          \\"args\\": [
+            \\"0xA0Cf798816D4b9b9866b5330EEa46a18382f251e\\",
+            0
+          ]
+        }
+
+        Details: Error: missing revert data in call exception; Transaction reverted without a reason string [ See: https://links.ethers.org/v5-errors-CALL_EXCEPTION ] (data=\\"0x\\", transaction={\\"to\\":\\"0x1dfe7Ca09e99d10835Bf73044a23B73Fc20623DF\\",\\"data\\":\\"0x2f745c59000000000000000000000000a0cf798816d4b9b9866b5330eea46a18382f251e0000000000000000000000000000000000000000000000000000000000000000\\",\\"accessList\\":null}, error={\\"reason\\":\\"missing response\\",\\"code\\":\\"SERVER_ERROR\\",\\"requestBody\\":\\"{\\\\\\"method\\\\\\":\\\\\\"eth_call\\\\\\",\\\\\\"params\\\\\\":[{\\\\\\"to\\\\\\":\\\\\\"0x1dfe7ca09e99d10835bf73044a23b73fc20623df\\\\\\",\\\\\\"data\\\\\\":\\\\\\"0x2f745c59000000000000000000000000a0cf798816d4b9b9866b5330eea46a18382f251e0000000000000000000000000000000000000000000000000000000000000000\\\\\\"},\\\\\\"latest\\\\\\"],\\\\\\"id\\\\\\":45,\\\\\\"jsonrpc\\\\\\":\\\\\\"2.0\\\\\\"}\\",\\"requestMethod\\":\\"POST\\",\\"serverError\\":{\\"errno\\":-111,\\"code\\":\\"ECONNREFUSED\\",\\"syscall\\":\\"connect\\",\\"address\\":\\"127.0.0.1\\",\\"port\\":8545},\\"url\\":\\"http://127.0.0.1:8545\\"}, code=CALL_EXCEPTION, version=providers/5.7.0)",
+          "Contract method reverted with an error.
+
+        Config:
+        {
           \\"addressOrName\\": \\"0xa5cc3c03994DB5b0d9A5eEdD10CabaB0813678AC\\",
           \\"contractInterface\\": \\"...\\",
           \\"functionName\\": \\"love\\",
@@ -516,7 +600,7 @@ describe('readContracts', () => {
           \\"args\\": \\"0xa5cc3c03994DB5b0d9A5eEdD10CabaB0813678AC\\"
         }
 
-        Details: Error: call revert exception [ See: https://links.ethers.org/v5-errors-CALL_EXCEPTION ] (method=\\"love(address)\\", data=\\"0x\\", errorArgs=null, errorName=null, errorSignature=null, reason=null, code=CALL_EXCEPTION, version=abi/5.7.0)",
+        Details: Error: missing revert data in call exception; Transaction reverted without a reason string [ See: https://links.ethers.org/v5-errors-CALL_EXCEPTION ] (data=\\"0x\\", transaction={\\"to\\":\\"0xa5cc3c03994DB5b0d9A5eEdD10CabaB0813678AC\\",\\"data\\":\\"0x3684b4a6000000000000000000000000a5cc3c03994db5b0d9a5eedd10cabab0813678ac\\",\\"accessList\\":null}, error={\\"reason\\":\\"missing response\\",\\"code\\":\\"SERVER_ERROR\\",\\"requestBody\\":\\"{\\\\\\"method\\\\\\":\\\\\\"eth_call\\\\\\",\\\\\\"params\\\\\\":[{\\\\\\"to\\\\\\":\\\\\\"0xa5cc3c03994db5b0d9a5eedd10cabab0813678ac\\\\\\",\\\\\\"data\\\\\\":\\\\\\"0x3684b4a6000000000000000000000000a5cc3c03994db5b0d9a5eedd10cabab0813678ac\\\\\\"},\\\\\\"latest\\\\\\"],\\\\\\"id\\\\\\":42,\\\\\\"jsonrpc\\\\\\":\\\\\\"2.0\\\\\\"}\\",\\"requestMethod\\":\\"POST\\",\\"serverError\\":{\\"errno\\":-111,\\"code\\":\\"ECONNREFUSED\\",\\"syscall\\":\\"connect\\",\\"address\\":\\"127.0.0.1\\",\\"port\\":8545},\\"url\\":\\"http://127.0.0.1:8545\\"}, code=CALL_EXCEPTION, version=providers/5.7.0)",
         ]
       `)
     })

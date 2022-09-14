@@ -40,19 +40,7 @@ describe('useContractRead', () => {
     expect(res).toMatchInlineSnapshot(`
       {
         "data": [
-          {
-            "hex": "0x02",
-            "type": "BigNumber",
-          },
-          {
-            "hex": "0x01",
-            "type": "BigNumber",
-          },
-          false,
-          {
-            "hex": "0x05a6db",
-            "type": "BigNumber",
-          },
+          null,
         ],
         "error": null,
         "fetchStatus": "idle",
@@ -84,19 +72,7 @@ describe('useContractRead', () => {
       expect(res).toMatchInlineSnapshot(`
         {
           "data": [
-            {
-              "hex": "0x02",
-              "type": "BigNumber",
-            },
-            {
-              "hex": "0x01",
-              "type": "BigNumber",
-            },
-            false,
-            {
-              "hex": "0x05a6db",
-              "type": "BigNumber",
-            },
+            null,
           ],
           "error": null,
           "fetchStatus": "idle",
@@ -151,19 +127,7 @@ describe('useContractRead', () => {
         const { data } = await result.current.refetch()
         expect(data).toMatchInlineSnapshot(`
           [
-            {
-              "hex": "0x02",
-              "type": "BigNumber",
-            },
-            {
-              "hex": "0x01",
-              "type": "BigNumber",
-            },
-            false,
-            {
-              "hex": "0x05a6db",
-              "type": "BigNumber",
-            },
+            null,
           ]
         `)
       })

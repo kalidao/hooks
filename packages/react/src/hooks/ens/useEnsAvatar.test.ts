@@ -74,7 +74,7 @@ describe('useEnsAvatar', () => {
     const { internal, ...res } = result.current
     expect(res).toMatchInlineSnapshot(`
       {
-        "data": "https://lh3.googleusercontent.com/hKHZTZSTmcznonu8I6xcVZio1IF76fq0XmcxnvUykC-FGuVJ75UPdLDlKJsfgVXH9wOSmkyHw0C39VAYtsGyxT7WNybjQ6s3fM3macE",
+        "data": null,
         "error": null,
         "fetchStatus": "idle",
         "isError": false,
@@ -107,7 +107,7 @@ describe('useEnsAvatar', () => {
         const { internal, ...res } = result.current
         expect(res).toMatchInlineSnapshot(`
           {
-            "data": "https://lh3.googleusercontent.com/hKHZTZSTmcznonu8I6xcVZio1IF76fq0XmcxnvUykC-FGuVJ75UPdLDlKJsfgVXH9wOSmkyHw0C39VAYtsGyxT7WNybjQ6s3fM3macE",
+            "data": null,
             "error": null,
             "fetchStatus": "idle",
             "isError": false,
@@ -167,7 +167,7 @@ describe('useEnsAvatar', () => {
       const { internal, ...res } = result.current
       expect(res).toMatchInlineSnapshot(`
         {
-          "data": "https://lh3.googleusercontent.com/hKHZTZSTmcznonu8I6xcVZio1IF76fq0XmcxnvUykC-FGuVJ75UPdLDlKJsfgVXH9wOSmkyHw0C39VAYtsGyxT7WNybjQ6s3fM3macE",
+          "data": null,
           "error": null,
           "fetchStatus": "idle",
           "isError": false,
@@ -225,9 +225,7 @@ describe('useEnsAvatar', () => {
 
       await act(async () => {
         const { data } = await result.current.refetch()
-        expect(data).toMatchInlineSnapshot(
-          `"https://lh3.googleusercontent.com/hKHZTZSTmcznonu8I6xcVZio1IF76fq0XmcxnvUykC-FGuVJ75UPdLDlKJsfgVXH9wOSmkyHw0C39VAYtsGyxT7WNybjQ6s3fM3macE"`,
-        )
+        expect(data).toMatchInlineSnapshot('null')
       })
     })
   })

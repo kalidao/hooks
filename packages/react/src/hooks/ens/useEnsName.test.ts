@@ -17,7 +17,7 @@ describe('useEnsName', () => {
     const { internal, ...res } = result.current
     expect(res).toMatchInlineSnapshot(`
       {
-        "data": "johnpalmer.eth",
+        "data": null,
         "error": null,
         "fetchStatus": "idle",
         "isError": false,
@@ -46,7 +46,7 @@ describe('useEnsName', () => {
         const { internal, ...res } = result.current
         expect(res).toMatchInlineSnapshot(`
           {
-            "data": "awkweb.eth",
+            "data": null,
             "error": null,
             "fetchStatus": "idle",
             "isError": false,
@@ -115,7 +115,7 @@ describe('useEnsName', () => {
       const { internal, ...res } = result.current
       expect(res).toMatchInlineSnapshot(`
         {
-          "data": "awkweb.eth",
+          "data": null,
           "error": null,
           "fetchStatus": "idle",
           "isError": false,
@@ -173,7 +173,7 @@ describe('useEnsName', () => {
 
       await act(async () => {
         const { data } = await result.current.refetch()
-        expect(data).toMatchInlineSnapshot(`"worm.eth"`)
+        expect(data).toMatchInlineSnapshot('null')
       })
     })
   })

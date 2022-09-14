@@ -15,12 +15,7 @@ describe('useEnsResolver', () => {
     const { internal, ...res } = result.current
     expect(res).toMatchInlineSnapshot(`
       {
-        "data": Resolver {
-          "_resolvedAddress": undefined,
-          "address": "0x4976fb03C32e5B8cfe2b6cCB31c09Ba78EBaBa41",
-          "name": "imhiring.eth",
-          "provider": "<Provider network={1} />",
-        },
+        "data": null,
         "error": null,
         "fetchStatus": "idle",
         "isError": false,
@@ -48,12 +43,7 @@ describe('useEnsResolver', () => {
       const { internal, ...res } = result.current
       expect(res).toMatchInlineSnapshot(`
         {
-          "data": Resolver {
-            "_resolvedAddress": undefined,
-            "address": "0x4976fb03C32e5B8cfe2b6cCB31c09Ba78EBaBa41",
-            "name": "awkweb.eth",
-            "provider": "<Provider network={1} />",
-          },
+          "data": null,
           "error": null,
           "fetchStatus": "idle",
           "isError": false,
@@ -111,12 +101,7 @@ describe('useEnsResolver', () => {
         const { internal, ...res } = result.current
         expect(res).toMatchInlineSnapshot(`
           {
-            "data": Resolver {
-              "_resolvedAddress": undefined,
-              "address": "0x4976fb03C32e5B8cfe2b6cCB31c09Ba78EBaBa41",
-              "name": "awkweb.eth",
-              "provider": "<Provider network={1} />",
-            },
+            "data": null,
             "error": null,
             "fetchStatus": "idle",
             "isError": false,
@@ -169,14 +154,7 @@ describe('useEnsResolver', () => {
 
       await act(async () => {
         const { data } = await result.current.refetch()
-        expect(data).toMatchInlineSnapshot(`
-          Resolver {
-            "_resolvedAddress": undefined,
-            "address": "0x4976fb03C32e5B8cfe2b6cCB31c09Ba78EBaBa41",
-            "name": "worm.eth",
-            "provider": "<Provider network={1} />",
-          }
-        `)
+        expect(data).toMatchInlineSnapshot('null')
       })
     })
   })

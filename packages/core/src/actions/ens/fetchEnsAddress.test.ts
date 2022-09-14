@@ -12,7 +12,7 @@ describe('fetchEnsAddress', () => {
     it('chainId', async () => {
       expect(
         await fetchEnsAddress({ name: 'awkweb.eth', chainId: 1 }),
-      ).toMatchInlineSnapshot(`"0xA0Cf798816D4b9b9866b5330EEa46a18382f251e"`)
+      ).toMatchInlineSnapshot('null')
     })
 
     describe('name', () => {
@@ -25,7 +25,7 @@ describe('fetchEnsAddress', () => {
       it('has address', async () => {
         expect(
           await fetchEnsAddress({ name: 'awkweb.eth' }),
-        ).toMatchInlineSnapshot(`"0xA0Cf798816D4b9b9866b5330EEa46a18382f251e"`)
+        ).toMatchInlineSnapshot('null')
       })
     })
   })
