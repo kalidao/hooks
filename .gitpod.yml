@@ -13,8 +13,9 @@ tasks:
     command: |
       pnpm playground
   - name: Shell
-    command: |
+    init: |
       gp sync-await build
+    command: |
       bash
     openMode: split-right
 

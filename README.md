@@ -35,6 +35,13 @@ npm install @kalidao/hooks wagmi ethers
 
 If you're interested in contributing, please read the [contributing docs](/.github/CONTRIBUTING.md) **before submitting a pull request**.
 
+<a href="https://gitpod.io/#<your-repository-url>">
+  <img
+    src="https://img.shields.io/badge/Contribute%20with-Gitpod-908a85?logo=gitpod"
+    alt="Contribute with Gitpod"
+  />
+</a>
+
 ## License
 
 [MIT](/LICENSE) License
