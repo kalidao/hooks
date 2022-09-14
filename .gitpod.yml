@@ -1,6 +1,6 @@
 ---
-# image:
-#  file: .gitpod.Dockerfile
+image:
+  file: .gitpod.Dockerfile
 
 tasks:
   - name: Kali Hooks Playground
@@ -8,18 +8,13 @@ tasks:
       # bring in secret access tokens from gitpod user dashboard
       eval $(gp env -e)
       pnpm install
-      [ ! -f .env.local ] && cp .env.example .env.local
-      cd -
-      # Install Foundry
-      curl -L https://foundry.paradigm.xyz | bash
-      source /home/gitpod/.bashrc
       foundryup
       gp sync-done build
     command: |
       pnpm playground
   - name: Shell
-    init: gp sync-await build
     command: |
+      gp sync-await build
       bash
     openMode: split-right
 
