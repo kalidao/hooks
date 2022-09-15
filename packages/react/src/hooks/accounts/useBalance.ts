@@ -2,7 +2,7 @@ import { FetchBalanceArgs, FetchBalanceResult, fetchBalance } from '@wagmi/core'
 import * as React from 'react'
 
 import { QueryConfig, QueryFunctionArgs } from '../../types'
-import { useBlockNumber } from '../network-status'
+// import { useBlockNumber } from '../network-status'
 import { useChainId, useQuery } from '../utils'
 
 export type UseBalanceArgs = Partial<FetchBalanceArgs> & {
@@ -58,15 +58,15 @@ export function useBalance({
     },
   )
 
-  const { data: blockNumber } = useBlockNumber({ watch })
+  // const { data: blockNumber } = useBlockNumber({ watch })
   React.useEffect(() => {
     if (!enabled) return
     if (!watch) return
-    if (!blockNumber) return
+    // if (!blockNumber) return
     if (!addressOrName) return
     balanceQuery.refetch()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [blockNumber])
+  }, []) // [blockNumber])
 
   return balanceQuery
 }

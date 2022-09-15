@@ -9,7 +9,7 @@ import { ContractInterface } from 'ethers'
 import * as React from 'react'
 
 import { QueryConfig, QueryFunctionArgs } from '../../types'
-import { useBlockNumber } from '../network-status'
+// import { useBlockNumber } from '../network-status'
 import { useChainId, useInvalidateOnBlock, useQuery } from '../utils'
 
 export type UseContractReadsConfig = QueryConfig<ReadContractsResult, Error> &
@@ -75,19 +75,25 @@ export function useContractReads({
   suspense,
   watch,
 }: UseContractReadsConfig) {
-  const { data: blockNumber } = useBlockNumber({
-    enabled: watch || cacheOnBlock,
-    watch,
-  })
+  // const { data: blockNumber } = useBlockNumber({
+  //   enabled: watch || cacheOnBlock,
+  //   watch,
+  // })
   const chainId = useChainId()
 
   const queryKey_ = React.useMemo(
     () =>
       queryKey([
         { allowFailure, contracts, overrides },
-        { blockNumber: cacheOnBlock ? blockNumber : undefined, chainId },
+        { blockNumber: /* cacheOnBlock ? blockNumber : */ undefined, chainId },
       ]),
-    [allowFailure, blockNumber, cacheOnBlock, chainId, contracts, overrides],
+    [
+      allowFailure,
+      /* blockNumber, */ cacheOnBlock,
+      chainId,
+      contracts,
+      overrides,
+    ],
   )
 
   const contractInterfaces = contracts.map(
@@ -96,9 +102,9 @@ export function useContractReads({
 
   const enabled = React.useMemo(() => {
     let enabled = Boolean(enabled_ && contracts.length > 0)
-    if (cacheOnBlock) enabled = Boolean(enabled && blockNumber)
+    if (cacheOnBlock) enabled = Boolean(enabled) // && blockNumber)
     return enabled
-  }, [blockNumber, cacheOnBlock, contracts, enabled_])
+  }, [/* , blockNumber */ cacheOnBlock, contracts, enabled_])
 
   useInvalidateOnBlock({ enabled: watch && !cacheOnBlock, queryKey: queryKey_ })
 

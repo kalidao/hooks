@@ -43,11 +43,3 @@ export {
   type WatchReadContractsConfig,
   type WatchReadContractsResult,
 } from './watchReadContracts'
-
-export {
-  writeContract,
-  type WriteContractArgs,
-  type WriteContractPreparedArgs,
-  type WriteContractResult,
-  type WriteContractUnpreparedArgs,
-} from './writeContract'

@@ -1,10 +1,11 @@
-import { useProvider } from '../providers'
+// import { useProvider } from '../providers'
 
 export type UseChainIdArgs = {
   chainId?: number
 }
 
 export function useChainId({ chainId }: UseChainIdArgs = {}) {
-  const provider = useProvider({ chainId })
-  return provider.network.chainId
+  // const provider = useProvider({ chainId })
+  // return provider.network.chainId
+  return chainId
 }

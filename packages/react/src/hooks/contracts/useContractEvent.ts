@@ -1,7 +1,7 @@
 import { ethers } from 'ethers'
 import * as React from 'react'
 
-import { useProvider, useWebSocketProvider } from '../providers'
+// import { useProvider, useWebSocketProvider } from '../providers'
 import { UseContractConfig, useContract } from './useContract'
 
 export type UseContractEventConfig<
@@ -19,19 +19,19 @@ export type UseContractEventConfig<
 
 export const useContractEvent = <Contract extends ethers.Contract>({
   addressOrName,
-  chainId,
+  // chainId,
   contractInterface,
   listener,
   eventName,
   signerOrProvider,
   once,
 }: UseContractEventConfig<Contract>) => {
-  const provider = useProvider({ chainId })
-  const webSocketProvider = useWebSocketProvider({ chainId })
+  // const provider = useProvider({ chainId })
+  // const webSocketProvider = useWebSocketProvider({ chainId })
   const contract = useContract<Contract>({
     addressOrName,
     contractInterface,
-    signerOrProvider: webSocketProvider ?? provider ?? signerOrProvider,
+    signerOrProvider: signerOrProvider, // webSocketProvider ?? provider ?? signerOrProvider,
   })
   const listenerRef = React.useRef(listener)
   listenerRef.current = listener

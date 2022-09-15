@@ -8,7 +8,7 @@ import {
 import * as React from 'react'
 
 import { QueryConfig, QueryFunctionArgs } from '../../types'
-import { useBlockNumber } from '../network-status'
+// import { useBlockNumber } from '../network-status'
 import { useChainId, useInvalidateOnBlock, useQuery } from '../utils'
 
 type UseContractReadArgs = ReadContractConfig & {
@@ -73,10 +73,10 @@ export function useContractRead({
   onSuccess,
 }: UseContractReadArgs & UseContractReadConfig) {
   const chainId = useChainId({ chainId: chainId_ })
-  const { data: blockNumber } = useBlockNumber({
-    enabled: watch || cacheOnBlock,
-    watch,
-  })
+  // const { data: blockNumber } = useBlockNumber({
+  //   enabled: watch || cacheOnBlock,
+  //   watch,
+  // })
 
   const queryKey_ = React.useMemo(
     () =>
@@ -88,12 +88,12 @@ export function useContractRead({
           functionName,
           overrides,
         },
-        { blockNumber: cacheOnBlock ? blockNumber : undefined },
+        { blockNumber: undefined }, // cacheOnBlock ? blockNumber : undefined },
       ]),
     [
       addressOrName,
       args,
-      blockNumber,
+      // blockNumber,
       cacheOnBlock,
       chainId,
       functionName,

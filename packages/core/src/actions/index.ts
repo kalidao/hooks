@@ -55,38 +55,7 @@ export {
   type WatchReadContractResult,
   type WatchReadContractsConfig,
   type WatchReadContractsResult,
-  type WriteContractArgs,
-  type WriteContractPreparedArgs,
-  type WriteContractResult,
-  type WriteContractUnpreparedArgs,
 } from './contracts'
-
-export {
-  fetchEnsAddress,
-  fetchEnsAvatar,
-  fetchEnsName,
-  fetchEnsResolver,
-  type FetchEnsAddressArgs,
-  type FetchEnsAddressResult,
-  type FetchEnsAvatarArgs,
-  type FetchEnsAvatarResult,
-  type FetchEnsNameArgs,
-  type FetchEnsNameResult,
-  type FetchEnsResolverArgs,
-  type FetchEnsResolverResult,
-} from './ens'
-
-export {
-  fetchBlockNumber,
-  fetchFeeData,
-  watchBlockNumber,
-  type FetchBlockNumberArgs,
-  type FetchBlockNumberResult,
-  type FetchFeeDataArgs,
-  type FetchFeeDataResult,
-  type WatchBlockNumberArgs,
-  type WatchBlockNumberCallback,
-} from './network-status'
 
 export {
   getProvider,
@@ -100,23 +69,3 @@ export {
   type WatchProviderCallback,
   type WatchWebSocketProviderCallback,
 } from './providers'
-
-export {
-  deprecatedSendTransaction,
-  fetchTransaction,
-  prepareSendTransaction,
-  sendTransaction,
-  waitForTransaction,
-  type DeprecatedSendTransactionArgs,
-  type DeprecatedSendTransactionResult,
-  type FetchTransactionArgs,
-  type FetchTransactionResult,
-  type PrepareSendTransactionArgs,
-  type PrepareSendTransactionResult,
-  type SendTransactionArgs,
-  type SendTransactionPreparedRequest,
-  type SendTransactionResult,
-  type SendTransactionUnpreparedRequest,
-  type WaitForTransactionArgs,
-  type WaitForTransactionResult,
-} from './transactions'

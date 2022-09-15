@@ -1,5 +1,4 @@
 import { getClient } from '../../client'
-import { watchBlockNumber } from '../network-status/watchBlockNumber'
 import {
   ReadContractConfig,
   ReadContractResult,
@@ -19,13 +18,9 @@ export function watchReadContract(
 
   const handleChange = async () => callback(await readContract(config))
 
-  const unwatch = config.listenToBlock
-    ? watchBlockNumber({ listen: true }, handleChange)
-    : undefined
   const unsubscribe = client.subscribe(({ provider }) => provider, handleChange)
 
   return () => {
     unsubscribe()
-    unwatch?.()
   }
 }
