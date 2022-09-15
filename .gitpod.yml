@@ -10,8 +10,8 @@ tasks:
       pnpm install
     command: |
       foundryup
-      pnpm playground
       gp sync-done build
+      pnpm playground
   - name: Shell
     command: |
       gp sync-await build
