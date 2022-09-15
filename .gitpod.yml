@@ -8,14 +8,13 @@ tasks:
       # bring in secret access tokens from gitpod user dashboard
       eval $(gp env -e)
       pnpm install
+    command: |
       foundryup
-      gp sync-done build
-    command: |
       pnpm playground
+      gp sync-done build
   - name: Shell
-    init: |
-      gp sync-await build
     command: |
+      gp sync-await build
       bash
     openMode: split-right
 
