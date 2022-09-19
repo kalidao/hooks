@@ -1,4 +1,3 @@
-import { QueryClient } from '@tanstack/react-query'
 import {
   RenderHookOptions,
   renderHook as defaultRenderHook,
@@ -6,26 +5,9 @@ import {
 } from '@testing-library/react'
 import * as React from 'react'
 
-import { WagmiConfig } from '../src'
-import { Client } from '../src/client'
-import { setupClient } from './utils'
+import { Client, WagmiConfig } from 'wagmi'
 
-export const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      // Prevent Jest from garbage collecting cache
-      cacheTime: Infinity,
-      // Turn off retries to prevent timeouts
-      retry: false,
-    },
-  },
-  logger: {
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    error: () => {},
-    log: console.log,
-    warn: console.warn,
-  },
-})
+// import { setupClient } from './utils'
 
 type Props = { client?: Client } & {
   children?:
@@ -55,8 +37,6 @@ export function renderHook<TResult, TProps>(
     ...options_,
   }
 
-  queryClient.clear()
-
   const utils = defaultRenderHook<TResult, TProps>(hook, options)
   return {
     ...utils,
@@ -65,22 +45,3 @@ export function renderHook<TResult, TProps>(
 }
 
 export { act, cleanup } from '@testing-library/react'
-export {
-  setupClient,
-  actConnect,
-  actDisconnect,
-  actSwitchNetwork,
-  useAccount,
-  useNetwork,
-} from './utils'
-export {
-  getCrowdfundArgs,
-  getProvider,
-  getSigners,
-  getTotalSupply,
-  getWebSocketProvider,
-  mirrorCrowdfundContractConfig,
-  mlootContractConfig,
-  wagmiContractConfig,
-  wagmigotchiContractConfig,
-} from '../../core/test'

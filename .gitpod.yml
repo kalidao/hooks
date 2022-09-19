@@ -7,6 +7,7 @@ tasks:
     init: |
       # bring in secret access tokens from gitpod user dashboard
       eval $(gp env -e)
+      pnpm config set auto-install-peers true
       pnpm install
     command: |
       foundryup

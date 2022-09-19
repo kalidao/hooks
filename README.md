@@ -1,7 +1,7 @@
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://avatars.githubusercontent.com/u/97812683?s=200&v=4">
-    <img alt="wagmi logo" src="https://avatars.githubusercontent.com/u/97812683?s=200&v=4" width="auto" height="60">
+    <img alt="kali dao logo" src="https://avatars.githubusercontent.com/u/97812683?s=200&v=4" width="auto" height="60">
   </picture>
 </p>
 
