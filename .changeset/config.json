@@ -13,7 +13,6 @@
     "example-dev",
     "example-cra",
     "example-next",
-    "example-remix",
-    "example-vite-react"
+    "example-remix"
   ]
 }
