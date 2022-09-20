@@ -12,8 +12,11 @@ describe('useChainGuard hook', () => {
       chain: undefined,
       chains: [],
     })
-    const { result } = renderHook(() => useChainGuard({ chainId: 5 }))
+    const { result } = renderHook(() =>
+      useChainGuard({ chainId: chain.goerli.id }),
+    )
     expect(result.current.isUserOnCorrectChain).toBeFalsy()
+    expect(result.current.userChain).toEqual(undefined)
     expect(result.current.isUserConnected).toBeFalsy()
   })
   it('should set isUserOnCorrectChain to false when user is connected to the wrong chain', () => {
@@ -21,8 +24,11 @@ describe('useChainGuard hook', () => {
       chain: chain.mainnet,
       chains: [],
     })
-    const { result } = renderHook(() => useChainGuard({ chainId: 5 }))
+    const { result } = renderHook(() =>
+      useChainGuard({ chainId: chain.goerli.id }),
+    )
     expect(result.current.isUserOnCorrectChain).toBeFalsy()
+    expect(result.current.userChain).toBe(wagmi.chain.mainnet)
     expect(result.current.isUserConnected).toBeTruthy()
   })
   it('should set isUserOnCorrectChain to true when user is connected to the targeted chain', () => {
@@ -30,8 +36,11 @@ describe('useChainGuard hook', () => {
       chain: chain.goerli,
       chains: [],
     })
-    const { result } = renderHook(() => useChainGuard({ chainId: 5 }))
+    const { result } = renderHook(() =>
+      useChainGuard({ chainId: chain.goerli.id }),
+    )
     expect(result.current.isUserOnCorrectChain).toBeTruthy()
+    expect(result.current.userChain).toBe(wagmi.chain.goerli)
     expect(result.current.isUserConnected).toBeTruthy()
   })
 })

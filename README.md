@@ -17,11 +17,29 @@ Kali Hooks is a Rect Hooks library that aims to simplify development of Kali DAO
 
 - 🚀 React hooks for working with Kali DAO EVM contracts.
 - 👟 Caching, request deduplication, multicall, batching, and persistence
-- 🌀 Auto-refresh data on wallet, block, and network changes
 - 🦄 TypeScript ready
-- 🌳 Test suite running against forked Ethereum network
 
-...and a lot more.
+## Hooks
+
+### useChainGuard
+
+Checks if the user is connected to a target chain. Useful for preventing users from writing to contracts on the wrong chain.
+
+Example React component snippet:
+
+```TypeScript
+const daoHomeChain = chain.arbitrum
+const { isUserOnCorrectChain, isUserConnected, userChain } = useChainGuard({ chainId: daoHomeChain.id })
+
+let wrongChainWarning
+if (!isUserOnCorrectChain) {
+  wrongChainWarning = (!isUserConnected) ?
+    wrongChainWarning = `Your Web3 wallet is disconnected. Please connect to ${daoHomeChain.name}.`
+    :
+    wrongChainWarning = `Your Web3 wallet is connected to ${userChain.name}. Please switch to ${daoHomeChain.name}.`
+}
+
+```
 
 ## Installation
 

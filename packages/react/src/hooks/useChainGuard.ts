@@ -8,9 +8,8 @@ import { useNetwork } from 'wagmi'
  */
 export function useChainGuard({ chainId }: { chainId: number }) {
   const { chain: userChain } = useNetwork()
-  console.error({ userChain })
   const isUserConnected = !!userChain?.id
   const isUserOnCorrectChain =
     userChain?.id && Number(chainId) === userChain?.id ? true : false
-  return { isUserOnCorrectChain, isUserConnected }
+  return { isUserOnCorrectChain, isUserConnected, userChain }
 }
