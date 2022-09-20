@@ -14,7 +14,7 @@ describe('useChainGuard hook', () => {
     })
     const { result } = renderHook(() => useChainGuard({ chainId: 5 }))
     expect(result.current.isUserOnCorrectChain).toBeFalsy()
-    expect(result.current.userChain).toEqual(undefined)
+    expect(result.current.isUserConnected).toBeFalsy()
   })
   it('should set isUserOnCorrectChain to false when user is connected to the wrong chain', () => {
     vi.spyOn(wagmi, 'useNetwork').mockReturnValueOnce({
@@ -23,7 +23,7 @@ describe('useChainGuard hook', () => {
     })
     const { result } = renderHook(() => useChainGuard({ chainId: 5 }))
     expect(result.current.isUserOnCorrectChain).toBeFalsy()
-    expect(result.current.userChain).toBe(wagmi.chain.mainnet)
+    expect(result.current.isUserConnected).toBeTruthy()
   })
   it('should set isUserOnCorrectChain to true when user is connected to the targeted chain', () => {
     vi.spyOn(wagmi, 'useNetwork').mockReturnValueOnce({
@@ -32,6 +32,6 @@ describe('useChainGuard hook', () => {
     })
     const { result } = renderHook(() => useChainGuard({ chainId: 5 }))
     expect(result.current.isUserOnCorrectChain).toBeTruthy()
-    expect(result.current.userChain).toBe(wagmi.chain.goerli)
+    expect(result.current.isUserConnected).toBeTruthy()
   })
 })
