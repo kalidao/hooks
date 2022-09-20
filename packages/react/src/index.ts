@@ -1,1 +1,1 @@
-export type { useChainGuard } from './hooks'
+export { useChainGuard } from './hooks'
