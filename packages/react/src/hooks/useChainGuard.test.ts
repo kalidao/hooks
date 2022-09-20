@@ -1,85 +1,37 @@
-// // import { connect } from '@wagmi/core'
+import { renderHook } from '@testing-library/react-hooks'
+import { describe, expect, it, vi } from 'vitest'
 
-// import { describe, expect, it } from 'vitest'
+import * as wagmi from 'wagmi'
+import { chain } from 'wagmi'
 
-// import { useChainGuard } from '../../test'
-// // import { UseConnectArgs, UseConnectConfig, useConnect } from './useConnect'
-// // import { useDisconnect } from './useDisconnect'
-// // import {
-// //   UseSwitchNetworkArgs,
-// //   UseSwitchNetworkConfig,
-// //   useSwitchNetwork,
-// // } from './useSwitchNetwork'
+import { useChainGuard } from './useChainGuard'
 
-// function useNetworkWithConnectAndDisconnect(
-//   config: {
-//     connect?: any // UseConnectArgs & UseConnectConfig
-//     switchNetwork?: any // UseSwitchNetworkArgs & UseSwitchNetworkConfig
-//   } = {},
-// ) {
-//   return {
-//     connect: undefined, // useConnect(config.connect),
-//     disconnect: undefined, // useDisconnect(),
-//     network: undefined, // useNetwork(),
-//     switchNetwork: undefined, // useSwitchNetwork(config.switchNetwork),
-//   }
-// }
-
-// describe('useNetwork', () => {
-//   describe('mounts', () => {
-//     it('is connected', async () => {
-//       const client = setupClient()
-//       // await connect({ connector: client.connectors[0]! })
-
-//       const { result } = renderHook(() => useNetwork(), {
-//         initialProps: { client },
-//       })
-
-//       const { chain, chains } = result.current
-//       expect(chains.length).toBe(5)
-//       expect(chain?.id).toBe(1)
-//     })
-
-//     it('is not connected', async () => {
-//       const { result } = renderHook(() => useNetwork())
-
-//       const { chain, chains } = result.current
-//       expect(chains.length).toBe(0)
-//       expect(chain).toBeUndefined()
-//     })
-//   })
-
-//   describe('behavior', () => {
-//     it('updates on connect and disconnect', async () => {
-//       const utils = renderHook(() => useNetworkWithConnectAndDisconnect())
-//       const { result } = utils
-
-//       await actConnect({ utils })
-//       expect(result.current.network?.chain?.id).toBe(1)
-//       await actDisconnect({ utils })
-//       expect(result.current.network?.chain).toMatchInlineSnapshot(`undefined`)
-//     })
-
-//     it('updates on switch network (supported chain)', async () => {
-//       const utils = renderHook(() => useNetworkWithConnectAndDisconnect())
-//       const { result } = utils
-
-//       await actConnect({ utils })
-//       // expect(result.current.network?.chain?.id).toBe(1)
-//       await actSwitchNetwork({ utils, chainId: 4 })
-//       // expect(result.current.network?.chain?.id).toBe(4)
-//       // expect(result.current.network?.chain?.unsupported).toBe(false)
-//     })
-
-//     it('updates on switch network (unsupported chain)', async () => {
-//       const utils = renderHook(() => useNetworkWithConnectAndDisconnect())
-//       const { result } = utils
-
-//       await actConnect({ utils })
-//       // expect(result.current.network?.chain?.id).toBe(1)
-//       await actSwitchNetwork({ utils, chainId: 69 })
-//       // expect(result.current.network?.chain?.id).toBe(69)
-//       // expect(result.current.network?.chain?.unsupported).toBe(true)
-//     })
-//   })
-// })
+describe('useChainGuard hook', () => {
+  it('should set isUserOnCorrectChain to false when user is not connected', () => {
+    vi.spyOn(wagmi, 'useNetwork').mockReturnValueOnce({
+      chain: undefined,
+      chains: [],
+    })
+    const { result } = renderHook(() => useChainGuard({ chainId: 5 }))
+    expect(result.current.isUserOnCorrectChain).toBeFalsy()
+    expect(result.current.userChain).toEqual(undefined)
+  })
+  it('should set isUserOnCorrectChain to false when user is connected to the wrong chain', () => {
+    vi.spyOn(wagmi, 'useNetwork').mockReturnValueOnce({
+      chain: chain.mainnet,
+      chains: [],
+    })
+    const { result } = renderHook(() => useChainGuard({ chainId: 5 }))
+    expect(result.current.isUserOnCorrectChain).toBeFalsy()
+    expect(result.current.userChain).toBe(wagmi.chain.mainnet)
+  })
+  it('should set isUserOnCorrectChain to true when user is connected to the targeted chain', () => {
+    vi.spyOn(wagmi, 'useNetwork').mockReturnValueOnce({
+      chain: chain.goerli,
+      chains: [],
+    })
+    const { result } = renderHook(() => useChainGuard({ chainId: 5 }))
+    expect(result.current.isUserOnCorrectChain).toBeTruthy()
+    expect(result.current.userChain).toBe(wagmi.chain.goerli)
+  })
+})
