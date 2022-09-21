@@ -28,6 +28,8 @@ Checks if the user is connected to a target chain. Useful for preventing users f
 Example React component snippet:
 
 ```TypeScript
+import { useChainGuard } from 'kalidao-hooks'
+
 const daoHomeChain = chain.arbitrum
 const { isUserOnCorrectChain, isUserConnected, userChain } = useChainGuard({ chainId: daoHomeChain.id })
 
