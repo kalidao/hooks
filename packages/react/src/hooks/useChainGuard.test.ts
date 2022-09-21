@@ -4,7 +4,7 @@ import { describe, expect, it, vi } from 'vitest'
 import * as wagmi from 'wagmi'
 import { chain } from 'wagmi'
 
-import { useChainGuard } from './useChainGuard'
+import { useChainGuard } from '../'
 
 describe('useChainGuard hook', () => {
   it('should set isUserOnCorrectChain to false when user is not connected', () => {
