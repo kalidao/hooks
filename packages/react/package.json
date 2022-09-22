@@ -1,5 +1,5 @@
 {
-  "name": "kalidao-hooks",
+  "name": "@kalidao/hooks",
   "description": "React Hooks for Ethereum",
   "license": "MIT",
   "version": "0.0.3",
