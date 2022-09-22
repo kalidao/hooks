@@ -2,7 +2,7 @@
   "name": "@kalidao/hooks",
   "description": "React Hooks for Ethereum",
   "license": "MIT",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "repository": {
     "type": "git",
     "url": "https://github.com/kalidao/hooks.git",
