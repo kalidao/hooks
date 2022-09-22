@@ -2,4 +2,4 @@
 '@kalidao/hooks': patch
 ---
 
-Transition to Kali DAO npm repo
+update package name refs
