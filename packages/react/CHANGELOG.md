@@ -1,5 +1,11 @@
 # @kalidao/hooks
 
+## 0.0.5
+
+### Patch Changes
+
+- [#9](https://github.com/kalidao/hooks/pull/9) [`e69ad49`](https://github.com/kalidao/hooks/commit/e69ad4947bd0d82d38332cbbf7c14f4eba0ec41c) Thanks [@ivelin](https://github.com/ivelin)! - add README.md to npm package
+
 ## 0.0.4
 
 ### Patch Changes
