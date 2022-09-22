@@ -175,6 +175,8 @@ If your PR is making changes to an area that already has a changeset (e.g. there
 
 ### Releasing
 
+Use `pnpm changeset` to prepare a new release.
+
 The first time a PR with a changeset is merged after a release, a new PR will automatically be created called `chore: version packages`. Any subsequent PRs with changesets will automatically update this existing version packages PR. Merging this PR triggers the release process by publishing to npm and cleaning up the changeset files.
 
 ### Creating a snapshot release
